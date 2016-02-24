@@ -1,7 +1,7 @@
 # docker-unison
 
-A Unison Docker container for fast file synchronization into a Docker container,
-i.e. on OSX where both VirtualBox shares as well as NFS is awfully slow.
+A Unison Docker container for fast file synchronization, i.e. on OSX where both
+VirtualBox shares as well as NFS is awfully slow.
 
 ## Requirements
 
