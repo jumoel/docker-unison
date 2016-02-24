@@ -21,9 +21,6 @@ $ docker run --rm --volumes-from=$UNISON busybox ls -l /app
 The `-auto` option for unison makes it run almost automatically and `-batch` makes
 it run without waiting for user input. See `unison -help` for more options.
 
-The container by default synchronizes to and shares the `/app` folder, but that
-can be configured with the `UNISON_WORKING_DIR` [environment variable](https://docs.docker.com/engine/reference/run/#env-environment-variables).
-
 Usage with `docker-compose` is similarly simple:
 
 ```yaml
@@ -44,3 +41,11 @@ The `sleep 5 && ls -l /app` allows for time to synchronize the unison folder
 before listing the contents of it. In a real scenario, the unison service will
 probably need to be started separately, so the initial synchronization can be run
 before the consumer service needs the files.
+
+## Configuration
+
+The container by default synchronizes to and shares the `/app` folder, but that
+can be configured with the `UNISON_WORKING_DIR` [environment variable](https://docs.docker.com/engine/reference/run/#env-environment-variables).
+
+Unison is set up as `ENTRYPOINT`, so additional parameters when running the container
+will be passed on to the program.
