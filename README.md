@@ -37,9 +37,21 @@ services:
       - "5000:5000"
 ```
 
+To test it, run:
+
+```shell
+$ docker-compose up
+```
+
+In a new terminal, then hurry up and run
+
+```shell
+$ unison . socket://local.docker:5000/ -auto -batch
+```
+
 The `sleep 5 && ls -l /app` allows for time to synchronize the unison folder
 before listing the contents of it. In a real scenario, the unison service will
-probably need to be started separately, so the initial synchronization can be run
+probably need to be started separately, so an initial synchronization can be run
 before the consumer service needs the files.
 
 ## Configuration
@@ -47,5 +59,5 @@ before the consumer service needs the files.
 The container by default synchronizes to and shares the `/app` folder, but that
 can be configured with the `UNISON_WORKING_DIR` [environment variable](https://docs.docker.com/engine/reference/run/#env-environment-variables).
 
-Unison is set up as `ENTRYPOINT`, so additional parameters when running the container
+Unison is set up as [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#entrypoint), so additional parameters when running the container
 will be passed on to the program.
